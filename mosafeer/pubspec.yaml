@@ -35,7 +35,25 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
-
+  fonts:
+    - family: Raleway
+      fonts:
+        - asset: fonts/Raleway-Regular.ttf
+        - asset: fonts/Raleway-Light.ttf
+          weight: 200
+        - asset: fonts/Raleway-ExtraLight.ttf
+          weight: 300
+        - asset: fonts/Raleway-Light.ttf
+          weight: 400
+        - asset: fonts/Raleway-Medium.ttf
+          weight: 500
+        - asset: fonts/Raleway-Bold.ttf
+          weight: 600
+        - asset: fonts/Raleway-ExtraBold.ttf
+          weight: 700
+    - family: Dima Kereshmeh
+      fonts:
+        - asset: fonts/DimaKereshmeh.ttf
   # To add assets to your application, add an assets section, like this:
   # assets:
   #  - images/a_dot_burr.jpeg
