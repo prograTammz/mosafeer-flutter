@@ -35,3 +35,4 @@ class _BorderPaint extends BoxPainter{
       RRect.fromRectAndRadius(ind, Radius.circular(24.0)), paint,
     );
   }
+}
