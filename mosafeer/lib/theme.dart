@@ -1,15 +1,10 @@
 import 'colors.dart';
 import 'package:flutter/material.dart';
 
+
+
+
 ThemeData mosafeerTheme(){
-  ThemeData base =ThemeData.light();
-  return base.copyWith(
-
-  );
-}
-
-
-ThemeData mosafeerTextTheme(TextTheme base){
   final ThemeData base = ThemeData.light();
 
   return base.copyWith(
