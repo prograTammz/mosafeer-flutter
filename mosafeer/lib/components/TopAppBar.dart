@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 
-import '../theme.dart';
 import '../colors.dart';
 import './TopBarIndicator.dart';
 class TopAppBar extends StatefulWidget{
 
-  final Function(int) tabHandler;
   final TabController tabController;
-  const TopAppBar({Key key,this.tabHandler,this.tabController}):super(key:key);
+  const TopAppBar({Key key, @required this.tabController}):super(key:key);
 
   @override
   _TopAppBar createState() => _TopAppBar();
@@ -42,85 +40,20 @@ class _TopAppBar extends State<TopAppBar>{
             )
           ),
           Container(
+            margin: EdgeInsets.only(left: 10),
             width: MediaQuery.of(context).size.width -100,
-            child: DefaultTabController(
-              length: 3,
-               child: TabBar(
+            child:TabBar(
                  indicator: CircularTabIndicator(),
+                 controller: widget.tabController,
+                 labelStyle: TextStyle(fontSize: 15),
                  tabs: <Widget>[
-                  _NavigationTab(
-                    title: "EXPLORE",
-                    callBack: () => widget.tabHandler(0),
-                    tabController: widget.tabController,
-                    index: 0,
-                  ),
-                  _NavigationTab(
-                    title: "HANGOUT",
-                    callBack: () => widget.tabHandler(0),
-                    tabController: widget.tabController,
-                    index: 0,
-                  ),
-                  _NavigationTab(
-                    title: "GUIDE",
-                    callBack: () => widget.tabHandler(0),
-                    tabController: widget.tabController,
-                    index: 0,
-                  )
+                   Tab(text: "EXPLORE"),
+                   Tab(text: "HANGOUT"),
+                   Tab(text: "GUIDE"),
                 ],
                )
             ),
-          )
         ],
-      ),
-    );
-  }
-}
-class _NavigationTab extends StatefulWidget{
-  final String title;
-  final Function callBack;
-  final TabController tabController;
-  final int index;
-
-  const _NavigationTab({
-    Key key,
-    this.title,
-    this.callBack,
-    this.tabController,
-    this.index
-  }) : super(key: key);
-
-  @override
-  _NavigationTabState createState() => _NavigationTabState();
-}
-
-class _NavigationTabState extends State<_NavigationTab> {
-  @override
-  void initState() {
-    super.initState();
-    widget.tabController.addListener(() => setState(() {}));
-  }
-
-  @override
-  void dispose() {
-    widget.tabController.dispose();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox.expand(
-      child: FlatButton(
-      splashColor: Colors.transparent,
-      highlightColor: Colors.transparent,
-        child: Text(
-          widget.title,
-          style: Theme.of(context).textTheme.button.copyWith(
-            color: widget.tabController.index == widget.index
-                ? kMosafeerPrimaryWhite
-                : kMosafeerPrimaryWhite.withOpacity(.6),
-          ),
-        ),
-        onPressed: widget.callBack,
       ),
     );
   }
