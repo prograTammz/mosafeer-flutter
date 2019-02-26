@@ -45,7 +45,7 @@ class _TopAppBar extends State<TopAppBar>{
             child:TabBar(
                  indicator: CircularTabIndicator(),
                  controller: widget.tabController,
-                 labelStyle: TextStyle(fontSize: 15),
+                 labelStyle: TextStyle(fontSize: 12,fontWeight: FontWeight.w700),
                  tabs: <Widget>[
                    Tab(text: "EXPLORE"),
                    Tab(text: "HANGOUT"),
