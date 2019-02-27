@@ -24,7 +24,7 @@ class _CustomAppBarState extends State<CustomAppBar> with TickerProviderStateMix
   @override
   Widget build(BuildContext context){
     return SliverAppBar(
-      floating: false,
+      floating: false, pinned: true, snap: false,
       expandedHeight: 120,
       leading: IconButton(
                 iconSize: 24.0,
@@ -73,7 +73,6 @@ class _CustomAppBarState extends State<CustomAppBar> with TickerProviderStateMix
               preferredSize: Size(MediaQuery.of(context).size.width, 120),
               child: Container(
                 height: 120,
-                padding: EdgeInsets.symmetric(horizontal: 4.0),
                 child: TabBarView(
                   controller: _tabController,
                   children: <Widget>[
@@ -115,34 +114,25 @@ Widget buildMenu(count,context,icons,names){
     child: GridView.count(
       crossAxisCount: 2,
       physics: NeverScrollableScrollPhysics(),
-      childAspectRatio:((MediaQuery.of(context).size.width / 2) / 60),
+      childAspectRatio:((MediaQuery.of(context).size.width / 2) / 50),
+      crossAxisSpacing: 10.0,
+      mainAxisSpacing: 10.0,
+      padding: EdgeInsets.symmetric(horizontal: 12.0,vertical: 4.0),
       shrinkWrap: true,
       children: List.generate(count, (index){
         return 
-        InkWell(
-          // When the user taps the button, show a snackbar
-            onTap: () {
-              Scaffold.of(context).showSnackBar(SnackBar(
-                content: Text('Tap'),
-              ));
-            },
-            child:Container(
-            margin: EdgeInsets.all(6),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(4)),
-              color: Theme.of(context).accentColor,
-              boxShadow: [BoxShadow(
-                      color: Colors.black12,
-                      blurRadius: 2.0,
-                      spreadRadius: 1.0,
-                      offset: Offset(0.0, 3.0)
-                    )]
-            ),
+        RaisedButton(
+          onPressed: () {},
+          splashColor: kMosafeerPurple900,
+          highlightColor: kMosafeerPurple900,
+          color: Theme.of(context).accentColor,
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4.0)),
+          child: Container(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
-                Icon(icons[index]),
+                Icon(icons[index],color: Colors.white,),
                 Text(names[index],style: TextStyle(
                   color: Colors.white,
                   fontSize: 14,
@@ -150,7 +140,7 @@ Widget buildMenu(count,context,icons,names){
                 ),)
               ],
             ),
-          )
+          ),
         );
       }),
     ),
