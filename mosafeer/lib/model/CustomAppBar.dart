@@ -24,7 +24,7 @@ class _CustomAppBarState extends State<CustomAppBar> with TickerProviderStateMix
   @override
   Widget build(BuildContext context){
     return SliverAppBar(
-      floating: true,
+      floating: false,
       expandedHeight: 120,
       leading: IconButton(
                 iconSize: 24.0,
@@ -118,30 +118,39 @@ Widget buildMenu(count,context,icons,names){
       childAspectRatio:((MediaQuery.of(context).size.width / 2) / 60),
       shrinkWrap: true,
       children: List.generate(count, (index){
-        return Container(
-          margin: EdgeInsets.all(6),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.all(Radius.circular(4)),
-            color: Theme.of(context).accentColor,
-            boxShadow: [BoxShadow(
-                    color: Colors.black12,
-                    blurRadius: 2.0,
-                    spreadRadius: 1.0,
-                    offset: Offset(0.0, 3.0)
-                  )]
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              Icon(icons[index]),
-              Text(names[index],style: TextStyle(
-                color: Colors.white,
-                fontSize: 14,
-                fontWeight: FontWeight.w700
-              ),)
-            ],
-          ),
+        return 
+        InkWell(
+          // When the user taps the button, show a snackbar
+            onTap: () {
+              Scaffold.of(context).showSnackBar(SnackBar(
+                content: Text('Tap'),
+              ));
+            },
+            child:Container(
+            margin: EdgeInsets.all(6),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.all(Radius.circular(4)),
+              color: Theme.of(context).accentColor,
+              boxShadow: [BoxShadow(
+                      color: Colors.black12,
+                      blurRadius: 2.0,
+                      spreadRadius: 1.0,
+                      offset: Offset(0.0, 3.0)
+                    )]
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                Icon(icons[index]),
+                Text(names[index],style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 14,
+                  fontWeight: FontWeight.w700
+                ),)
+              ],
+            ),
+          )
         );
       }),
     ),

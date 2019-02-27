@@ -36,6 +36,21 @@ class HomePage extends StatelessWidget{
         ],
 
       ),
+      bottomNavigationBar: Container(
+        
+        
+        child:BottomNavigationBar(
+
+        type: BottomNavigationBarType.fixed,
+        items: <BottomNavigationBarItem>[
+          BottomNavigationBarItem(icon: Icon(Icons.home), title:Text('Home')),
+          BottomNavigationBarItem(icon: Icon(Icons.explore), title:Text('Explore')),
+          BottomNavigationBarItem(icon: Icon(Icons.photo_album), title: Text('SnapBook')),
+          BottomNavigationBarItem(icon: Icon(Icons.map), title: Text('Map')),
+          BottomNavigationBarItem(icon: Icon(Icons.forum), title: Text('SnapBook')),
+        ],
+        fixedColor: kMosafferBlac,
+      )),
     );
   }
 }
