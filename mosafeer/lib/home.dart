@@ -8,31 +8,31 @@ class HomePage extends StatelessWidget{
   @override
   Widget build(BuildContext context){
     return Scaffold(
-      backgroundColor: kMosafeerPurple800,
+      backgroundColor: kMosafeerPrimaryWhite,
       body: CustomScrollView(
         
         slivers: <Widget>[
           CustomAppBar(),
-          SliverFillRemaining(
-            child: Container(
-              margin: EdgeInsets.only(top: 15.0),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(16.0),
-                  topRight: Radius.circular(16.0)
-                ),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black12,
-                    blurRadius: 8.0,
-                    spreadRadius: 2.0,
-                    offset: Offset(0.0, -8.0)
-                  )
-                ]
-              ),
+          
+          SliverGrid(
+            gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+              maxCrossAxisExtent: MediaQuery.of(context).size.width,
+              mainAxisSpacing: 0.0,
+              crossAxisSpacing: 10.0,
+              childAspectRatio: 1,
+            ),
+            delegate: SliverChildBuilderDelegate(
+              (BuildContext context, int index) {
+                return Container(
+                  alignment: Alignment.center,
+                  color: Colors.teal[100 * (index % 9)],
+                  child: Text('grid item $index'),
+                );
+              },
+              childCount: 20,
             ),
           )
+          
         ],
 
       ),
